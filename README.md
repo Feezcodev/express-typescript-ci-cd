@@ -1,33 +1,37 @@
-# Express TypeScript CI/CD Pipeline Lab
+# Express & TypeScript GitHub Actions CI/CD Pipeline Lab
 
-A lightweight Express application written in TypeScript with automated unit testing via Jest/Supertest and a continuous integration (CI) workflow configured using GitHub Actions.
-
----
-
-## 🚀 Features
-
-* **TypeScript & Express**: Strongly typed backend API setup.
-* **Unit Testing**: Automated testing with Jest and Supertest.
-* **CI/CD Automation**: GitHub Actions workflow (`ci.yml`) runs linting, building, and test suites automatically on `push` and `pull_request` to `main`.
+A lightweight, strongly typed Express.js REST API built with TypeScript, featuring automated test suites using Jest and Supertest, and an event-driven Continuous Integration (CI) pipeline powered by GitHub Actions.
 
 ---
 
-## 🛠 Project Structure
+## 📌 Project Overview
+
+This project demonstrates modern DevOps "Automation-as-Code" practices. Every push or pull request to the `main` branch automatically triggers an ephemeral GitHub-hosted runner to set up the Node.js environment, restore cached dependencies, compile TypeScript into production JavaScript, and execute automated unit test suites.
+
+---
+
+## 🛠 Tech Stack & Tools
+
+* **Backend Framework**: Node.js (v20) & Express.js
+* **Language**: TypeScript
+* **Testing Framework**: Jest & Supertest
+* **CI/CD Platform**: GitHub Actions
+* **Runner Environment**: `ubuntu-latest`
+
+---
+
+## 📁 Project Structure
 
 ```text
 github-actions-ci-pipeline/
 ├── .github/
 │   └── workflows/
-│       └── ci.yml
+│       └── ci.yml          # GitHub Actions CI pipeline configuration
 ├── src/
-│   ├── index.ts
+│   ├── index.ts            # Express application entry point
 │   └── test/
-│       └── app.test.ts
-├── jest.config.js
-├── package.json
-├── tsconfig.json
-└── README.md
-
----
-
-
+│       └── app.test.ts     # Supertest & Jest unit integration tests
+├── jest.config.js          # Jest ESM & TypeScript configuration
+├── package.json            # Project scripts & dependencies
+├── tsconfig.json           # TypeScript compiler configuration
+└── README.md               # Project documentation
