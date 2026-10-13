@@ -23,7 +23,7 @@ This project demonstrates modern DevOps "Automation-as-Code" practices. Every pu
 ## 📁 Project Structure
 
 ```text
-github-actions-ci-pipeline/
+express-typescript-ci-cd/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml          # GitHub Actions CI pipeline configuration
