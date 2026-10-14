@@ -1,4 +1,4 @@
-name: GitHub Actions CI Pipeline
+name: GitHub Actions CI/CD Pipeline
 
 on:
   push:
@@ -8,19 +8,24 @@ on:
 
 jobs:
   build-and-test:
-    name: Build & Test Express TypeScript App
+    name: Node.js v${{ matrix.node-version }} - Build & Test
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js Runtime
+      - name: Setup Node.js v${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
-      - name: Install Project Dependencies
+      - name: Install Dependencies
         run: npm install
 
       - name: Compile TypeScript Project
@@ -28,3 +33,21 @@ jobs:
 
       - name: Execute Automated Test Suite
         run: npm test
+
+  docker-build:
+    name: Build Container Image
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: feezcodev/express-typescript-ci-cd:latest
