@@ -35,6 +35,8 @@ express-typescript-ci-cd/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml          # GitHub Actions CI/CD matrix pipeline configuration
+├── Screenshots/
+│       └── dockerhub-success.png # Pipeline & Docker Hub verification proof
 ├── src/
 │   ├── index.ts            # Express application entry point
 │   └── test/
