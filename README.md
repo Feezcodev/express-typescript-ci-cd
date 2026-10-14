@@ -35,3 +35,4 @@ express-typescript-ci-cd/
 ├── package.json            # Project scripts & dependencies
 ├── tsconfig.json           # TypeScript compiler configuration
 └── README.md               # Project documentation
+[![GitHub Actions CI/CD Pipeline](https://github.com/Feezcodev/express-typescript-ci-cd/actions/workflows/ci.yml/badge.svg)](https://github.com/Feezcodev/express-typescript-ci-cd/actions)
