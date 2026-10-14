@@ -1,12 +1,13 @@
 {
   "name": "github-actions-ci-pipeline",
   "version": "1.0.0",
-  "description": "Express TypeScript CI/CD Pipeline Lab",
+  "description": "Express Typescript CI/CD Pipeline Lab",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
     "express": "^4.19.2"
