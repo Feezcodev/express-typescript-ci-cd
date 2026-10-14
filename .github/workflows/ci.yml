@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  NODE_ENV: production
-
 jobs:
   build-and-test:
     name: Node.js v${{ matrix.node-version }} - Build & Test
@@ -29,7 +26,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Compile TypeScript Project
         run: npm run build
@@ -37,7 +34,7 @@ jobs:
       - name: Execute Automated Test Suite
         run: npm test
 
-      # Upload build artifact only from Node v20 to avoid 409 matrix upload collisions
+      # Upload build artifact only from Node v20 to avoid matrix upload collisions
       - name: Upload Build Artifacts
         if: matrix.node-version == 20
         uses: actions/upload-artifact@v4
