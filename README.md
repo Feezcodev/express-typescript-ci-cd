@@ -2,25 +2,29 @@
 
 [![GitHub Actions CI/CD Pipeline](https://github.com/Feezcodev/express-typescript-ci-cd/actions/workflows/ci.yml/badge.svg)](https://github.com/Feezcodev/express-typescript-ci-cd/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Docker Image Version](https://img.shields.io/docker/v/feezcodev/express-typescript-ci-cd?label=dockerhub)](https://hub.docker.com/r/feezcodev/express-typescript-ci-cd)
 
-A robust, production-grade DevOps project focused on building a reliable CI/CD pipeline for a Node.js and TypeScript application using automated testing, multi-version build matrices, Docker containerization, and cloud deployment workflows.
+A robust, production-grade DevOps project engineered to build a fully automated CI/CD pipeline for a Node.js and TypeScript REST API. This repository implements multi-version matrix testing, automated unit/integration test suites, containerization with Docker Buildx, and secure artifact pushing to Docker Hub.
 
 ---
 
 ## 📌 Project Overview
 
-The CI/CD Lab is an Express.js and TypeScript REST API engineered to practice and demonstrate real-world DevOps workflows. This repository implements an event-driven automation pipeline via GitHub Actions that validates every code change before it reaches production.
+This project simulates a real-world enterprise software delivery workflow:
+1. **Continuous Integration (CI):** Every push or pull request triggers a matrix test across multiple Node.js versions (`18`, `20`, `22`) to ensure full runtime compatibility.
+2. **Automated Quality Control:** Executes Jest and Supertest suites before any container build is allowed.
+3. **Continuous Deployment (CD):** Upon successful test validation, the application is containerized and pushed securely to Docker Hub as a production-ready image (`feezcodev/express-typescript-ci-cd:latest`).
 
 ---
 
 ## 🛠 Tech Stack & Tools
 
-- **Application:** Node.js (v18, v20, v22 matrix), Express.js, TypeScript
-- **Package Management:** npm (with dependency caching)
-- **Containerization:** Docker & Docker Buildx
-- **Version Control:** Git & GitHub Actions
-- **Testing:** Jest & Supertest automated integration tests
-- **Deployment:** Render / Cloud target environments
+- **Runtime & Framework:** Node.js (v18, v20, v22), Express.js, TypeScript
+- **Testing & Quality:** Jest, Supertest
+- **Containerization:** Docker, Docker Buildx, Multi-stage builds
+- **CI/CD Automation:** GitHub Actions (Matrix strategies, workflow triggers)
+- **Registry:** Docker Hub (`feezcodev/express-typescript-ci-cd`)
+- **Version Control:** Git & GitHub
 
 ---
 
@@ -35,8 +39,8 @@ express-typescript-ci-cd/
 │   ├── index.ts            # Express application entry point
 │   └── test/
 │       └── app.test.ts     # Automated unit & integration tests
-├── Dockerfile              # Multi-stage container build definition
-├── jest.config.js          # Jest configuration
+├── Dockerfile              # Container build definition
+├── jest.config.js          # Jest test runner configuration
 ├── package.json            # Project scripts & dependencies
 ├── tsconfig.json           # TypeScript compiler configuration
 └── README.md               # Project documentation
