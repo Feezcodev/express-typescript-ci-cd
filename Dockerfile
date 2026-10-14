@@ -1,18 +1,16 @@
-# Use official lightweight Node.js image
 FROM node:20-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Install dependencies
+# Copy package files
 COPY package*.json ./
-RUN npm ci --production
 
-# Copy compiled source code
-COPY dist/ ./dist
+# Install production dependencies (using npm install instead of npm ci for robustness)
+RUN npm install --production
 
-# Expose application port
+# Copy compiled build output from the artifact download
+COPY dist/ ./dist/
+
 EXPOSE 3000
 
-# Start application
 CMD ["node", "dist/index.js"]
